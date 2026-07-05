@@ -36,7 +36,7 @@ with open("names.txt") as file:
 
 
 
-names = sorted(names)
+names = sorted(names, reverse=True)
 
 for name in names:
     print(f"hello, {name}")
