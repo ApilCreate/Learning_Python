@@ -18,6 +18,11 @@ class Complex:
         newReal = self.real +set2.real
         newImag = self.imag +set2.real
         return Complex(newReal, newImag)
+    
+    def __sub__(self, set2):
+        newReal = self.real - set2.real
+        newImag = self.imag - set2.real
+        return Complex(newReal, newImag)
 
 num1 = Complex(4,6)
 num1.showNum()
@@ -27,3 +32,6 @@ num2.showNum()
 
 num3 = num1 + num2
 num3.showNum()
+
+num4 = num1 - num2
+num4.showNum()
