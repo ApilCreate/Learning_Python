@@ -33,5 +33,5 @@ def run():
         return "User has won the match!!!!!!!!!🥳🥳🎉🎉🎉"
 
 
-print(run())
-
+if __name__ == '__main__':
+    run()
