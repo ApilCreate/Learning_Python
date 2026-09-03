@@ -14,7 +14,14 @@ def username():
     return first_name, last_name
 
 
-address = input("Enter your address:")
+def get_address():
+    return input("Enter your address:")
 
-first_name, last_name = username()
-print(f"Hi there! Welcome {first_name} {last_name}. \n{address}")
+
+def main():
+    address = get_address()
+    first_name, last_name = username()
+    print(f"Hi there! Welcome {first_name} {last_name}. \n{address}")
+
+if __name__ == '__main__':
+    main()
