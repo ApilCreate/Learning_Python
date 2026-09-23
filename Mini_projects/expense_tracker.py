@@ -1,6 +1,10 @@
+from expense import Expense
+
+
 def main():
     #Take input from the user
-    get_user_expense()
+    expense = get_user_expense()
+    print(expense)
     #Store the expenses into the file
     save_expense_to_file()
     #Read the stored data file amd sumarize expenses
@@ -10,8 +14,7 @@ def get_user_expense():
     print("Getting user data..")
     expense_name = input("Enter expense name: ")
     expense_amount = float(input("Enter amount costed: "))
-    print(f"You've listed {expense_name} as your expense")
-    print(f"You've entered Rs.{expense_amount} as your expense amount.")
+
 
     expense_category = [
         "🍔Food", "🏠Home", "👜Work", "🎉Fun", "✨Misc"
@@ -29,7 +32,9 @@ def get_user_expense():
             selected_index = int(input(f"Enter a category number {value_range}: ")) - 1
 
             if selected_index in range(len(expense_category)):
-                return selected_index
+                selected_category = expense_category[selected_index]
+                new_expense = Expense(name=expense_name, category=selected_category, amount=expense_amount)
+                return new_expense
             else:
                 print("Invalid!! Please try again")
 
