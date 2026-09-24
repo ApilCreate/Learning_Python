@@ -8,7 +8,7 @@ def main():
     #Take input from the user
     expense = get_user_expense()
     #Store the expenses into the file
-    save_expense_to_file(expense, expense_file_path)
+    #save_expense_to_file(expense, expense_file_path)
     #Read the stored data file amd sumarize expenses
     summarize_expense(expense_file_path)
 
@@ -52,6 +52,28 @@ def save_expense_to_file(expense: Expense, expense_file_path):
 
 def summarize_expense(expense_file_path):
     print("Summarizing user's expenses..")
+    expenses: list[Expense] = []
+    with open(expense_file_path, "r", encoding="utf-8") as f:
+        for line in f:
+            expense_name, expense_amount, expense_category = line.strip().split(",")
+            line_expense = Expense(
+                name=expense_name,
+                amount=float(expense_amount),
+                category=expense_category)
+            expenses.append(line_expense)
+
+    amount_by_category = {}
+    for expense in expenses:
+        key = expense.category
+        if key in amount_by_category:
+            amount_by_category[key] += expense.amount
+        else:
+            amount_by_category[key] = expense.amount
+
+    print("Expenses By Category")
+    for key, amount in amount_by_category.items():
+        print(f"  {key}: Rs.{amount:.2f}")
+
 
 if __name__ == "__main__":
     main()
